@@ -2,6 +2,9 @@
 # Tarefa 2 - Catarina Costa 20-4-2022 #
 
 # Menu principal  - Mostra as opcoes e pedido ao utilizador de selecao de opcao #
+import locale
+from datetime import datetime
+locale.setlocale(locale.LC_ALL, 'pt_PT')
 
 menu_options = {
     1: 'Vogal count',
@@ -43,26 +46,32 @@ def option2():
 #data por extenso - Parte do codigo para opcao 3 - pede a data de nascimento ao utilizador e converte por extenso # 
 
 
-def retorna_data_extenso(data_string):
-    import locale
-    from datetime import datetime
-    locale.setlocale(locale.LC_ALL, 'pt_PT')
-    data = input("Write your born date in DD/MM/AAAA:")
-    try:
-        datetime.strptime(data_string, '%d/%m/%Y')
-    except ValueError:
-        print("Formato de data inválido, deve ser DD/MM/AAAA")
-        return None
+
+def cast_data_extenso(data):
+
     if data_extenso is not None:
-        print(data_extenso) 
-    else:
-        data_datetime = datetime.strptime(data_string, '%d/%m/%Y')
+        data_datetime = datetime.strptime(data, '%d/%m/%Y')
         # return datetime.strftime(data_datetime, '%d de %B de %Y')
         dia = datetime.strftime(data_datetime, '%d')
         mes = datetime.strftime(data_datetime, '%B')
         ano = datetime.strftime(data_datetime, '%Y')
-        return dia + " de " + mes[0].upper() + mes[1:] + " de " + ano
-    data_extenso = retorna_data_extenso(data)
+        data_extenso =  dia + " de " + mes[0].upper() + mes[1:] + " de " + ano
+    else:
+        print("Data em branco")
+    return data_extenso
+    
+#-----------------------------------------------------------------------------------------------------------------#
+
+#-----------------------------------------------------------------------------------------------------------------#
+def option3():
+     data = input("Write your born date in DD/MM/AAAA:")
+     try:
+        datetime.strptime(data, '%d/%m/%Y')
+        data_ext = cast_data_extenso(data)
+        print (data_ext)
+     except ValueError:
+        print("Formato de data inválido, deve ser DD/MM/AAAA")
+
 #-----------------------------------------------------------------------------------------------------------------#
 
 # Sair - Parte do código para a opção 4 - co3nvida o utilizador a abandonar o programa # 
@@ -81,7 +90,7 @@ if __name__=='__main__':
         elif option == 2:
             option2()
         elif option == 3:
-            retorna_data_extenso ()
+            option3()
         elif option == 4:
             print('Obrigado por usar este  programa!')
             exit()
