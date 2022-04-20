@@ -4,7 +4,8 @@
 # Menu principal  - Mostra as opcoes e pedido ao utilizador de selecao de opcao #
 import locale
 from datetime import datetime
-locale.setlocale(locale.LC_ALL, 'pt_PT')
+
+locale.setlocale(locale.LC_ALL, 'pt_BR')
 
 menu_options = {
     1: 'Vogal count',
@@ -19,16 +20,22 @@ def print_menu():
         print (key, '--', menu_options[key] )
 
 # --------------------------------------------------------------------------------------------#
+# Funcao de contar vogais#
 
-
-# Contar vogais - Parte do codigo para a opcao 1 conta vogais da palavra pedida ao utilizador #
 
 def conta_vogais(string):
     string = string.lower() # para que a comparação não seja sensível a maiuscula/minuscula
     vogais = 'aeiou'
-    print(conta_vogais(""))
     return {i: string.count(i) for i in vogais if i in string}
 
+
+# Contar vogais - Parte do codigo para a opcao 1  conta vogais da palavra pedida ao utilizador #
+
+
+def option1():
+    word =input ("write some words: ")
+    vogais =conta_vogais(word)
+    print(vogais)
 # --------------------------------------------------------------------------------------------# 
 
 # Palindromo - Parte do codigo para opcao 2 - diz se a palavra é Palindromo ou nao # 
@@ -48,7 +55,7 @@ def option2():
 
 
 def cast_data_extenso(data):
-
+    data_extenso = data
     if data_extenso is not None:
         data_datetime = datetime.strptime(data, '%d/%m/%Y')
         # return datetime.strftime(data_datetime, '%d de %B de %Y')
@@ -86,7 +93,7 @@ if __name__=='__main__':
         except:
             print('Opcao errada, insira um numero ...')
         if option == 1:
-           conta_vogais()
+           option1()
         elif option == 2:
             option2()
         elif option == 3:
