@@ -6,6 +6,8 @@ Inclui ferramentas que ajudam a calcular, validar e acompanhar o consumo proteic
 
 ---
 
+![Ilustração](https://github.com/Cati94/LeucineCode-Scripts_para_MSUD/blob/main/Leuci.png)
+
 ## 🔹 Funcionalidades planeadas / incluídas
 
 * Scripts para cálculo de proteína total permitida por dia
